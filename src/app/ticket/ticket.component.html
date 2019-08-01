@@ -1,0 +1,35 @@
+<!-- <p>ticket works!</p> -->
+
+<div class="container form-group" align="center">
+    <form>
+    <label><strong>Enter Ticket Id: </strong></label>
+    <input type="number" class="form-control" name="tId" required [(ngModel)]="ticketId">
+    <p></p>
+    <button class="btn btn-primary" (click)="showTicket()">Submit</button>
+    </form>
+</div>
+
+<div *ngIf="check" align="center" class="container form-group">
+<h2>--Yout ticket information--</h2>
+<p></p>
+<table   border="1px solid black" >
+    <tr>
+        <th>Pnr</th>
+        <th>Seat No.</th>
+        <th>Name</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Departute date</th>
+        <th>Departure time</th>
+    </tr>
+    <tr>
+        <td>{{ ticket.pnr }}</td>
+        <td>{{ ticket.seatNo }}</td>
+        <td>{{ ticket.passengerName }}</td>
+        <td>{{ ticket.source }}</td>
+        <td>{{ ticket.destination }}</td>
+        <td>{{ ticket.departureDate }}</td>
+        <td>{{ ticket.departureTime }}</td>
+    </tr>
+</table>
+</div>

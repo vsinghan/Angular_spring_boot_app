@@ -1,0 +1,48 @@
+<!-- <body> -->
+  
+
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}
+  </h1>
+</div>
+
+<!-- <div class="container form-group">
+    <label><strong>Enter User Name: </strong></label>
+    <input type="text" class="form-control" name="uName" required>
+    <p></p>
+    <button class="btn btn-primary" (click)="verifyUser()">Submit</button>
+</div> -->
+
+<!-- <app-ticket></app-ticket> -->
+<!-- <div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div> -->
+<!-- <nav>
+    <a routerLink="/book-flight" routerLinkActive="active">Book Flight</a>
+    <a routerLink="/view-ticket" routerLinkActive="active">View Ticket</a>
+    <a routerLink="/cancel-ticket" routerLinkActive="active">Cancel Ticket</a>
+</nav> -->
+<!-- </body> -->
+<body>
+
+    <div class="topnav">
+      <form>
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+        <a routerLink="/book-flight" routerLinkActive="active" [class.inactiveLink]="check1" >Book Flight</a>
+        <a routerLink="/view-ticket" routerLinkActive="active" [class.inactiveLink]="check1">View Ticket</a>
+        <a routerLink="/cancel-ticket" routerLinkActive="active" [class.inactiveLink]="check1">Cancel Ticket</a>
+      </form>
+      <!-- <a class="active" href="#home">Home</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a> -->
+    </div>
+    <img src="./assets/frs.jpg" alt="frs image" class="image">
+    
+    </body>
+<router-outlet></router-outlet>
+ 

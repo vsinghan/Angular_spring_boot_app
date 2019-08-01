@@ -1,0 +1,13 @@
+<!-- <p>login works!</p> -->
+
+<div class="container form-group" align="center">
+    <p></p>
+    <label><strong>Enter User Name: </strong></label>
+    <input type="text" #username class="form-control" name="uName" required>
+    <p></p>
+    <button class="btn btn-primary" (click)="verifyUser(username.value)">Submit</button>
+</div>
+
+<div class="container form-group" align="center" *ngIf="check">
+    <h2>{{ eligibleMessage }}</h2>
+</div>

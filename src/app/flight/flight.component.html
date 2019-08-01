@@ -1,0 +1,86 @@
+<!-- <p>flight works!</p> -->
+
+<div class="container form-group" align="center">
+    <p></p>
+    <form>
+        <button class="btn btn-primary" (click)="displayAvailableSeats()">Check available seats</button>
+    </form>
+</div>
+
+<div class="container form-group" align="center">
+    <h2>{{ availableSeats }}</h2>
+</div>
+
+<div class="container form-group" align="center">
+    <form>
+    <label><strong>Enter no. of passengers: </strong></label>
+    <input type="number" class="form-control" name="noOfPassenger" required [(ngModel)]="noOfPassengers">
+    <p></p>
+    <button class="btn btn-primary" (click)="displayForm()">Submit</button>
+    </form>
+</div>
+
+<div class="container container-fluid mb-5" *ngIf="check2">
+    <h1>Enter the following information: </h1>
+      
+    <form #userForm="ngForm" *ngFor="let i of Arr(noOfPassengers).fill(1); index as j" (ngSubmit)="submitForm()">
+        <label>Passenger {{ j+1 }}</label>
+        <div class="form-group">
+            <label>Seat No.</label>
+            <input type="email" #Seat="ngModel" class="form-control" name="pSeatNo" [(ngModel)]="passengerSeatNo" required placeholder="Ex: 560">
+            <div *ngIf="Seat.errors && (Seat.invalid || Seat.touched)">
+                <small class="text-danger" *ngIf="Seat.errors.required && Seat.touched">Seat No. is required</small>
+                <!-- <small class="text-danger" *ngIf="Email.errors.pattern">Email must be in given format</small> -->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" class="form-control" pattern="^([A-Z]{1}[a-z]{2,20})\\s([A-Z]{1}[a-z]{4,20})$" #Name="ngModel" name="pName" [(ngModel)]="passengerName" placeholder="Enter full name" required>
+            <div *ngIf="Name.errors && (Name.invalid || Name.touched)">
+                <small class="text-danger" *ngIf="Name.errors.required && Name.touched">Name is required</small>
+                <small class="text-danger" *ngIf="Name.errors.pattern">First letter must be capital in first name and last name</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Age:</label>
+            <input type="number" #Age="ngModel" pattern="^[1-9]{1,2}$" [class.is-invalid]="Age.invalid && Age.touched" required class="form-control" name="pAge" [(ngModel)]="passengerAge" placeholder="Enter age">
+            <div *ngIf="Age.errors && (Age.invalid || Age.touched)">
+                <small class="text-danger" [class.d-none]="Age.valid || Age.untouched">Age is Required</small> 
+                <small class="text-danger" *ngIf="Age.errors.pattern">Age must be a number of atmost three digit</small>         
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Phone:</label>
+            <input type="number" #Phone="ngModel" pattern="^[6-9]{1}[0-9]{9}$" class="form-control" name="pPhone" [(ngModel)]="passengerPhone" required placeholder="Ex: 8989898989">
+            <div *ngIf="Phone.errors && (Phone.invalid || Phone.touched)">
+                <small class="text-danger" *ngIf="Phone.errors.required && Phone.touched">Phone no. is required</small>
+                <small class="text-danger" *ngIf="Phone.errors.pattern">Phone no. must be a 10 digit number starting from 6-9</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" #Email="ngModel" pattern="^[a-z0-9._%+-]{6,12}+@[a-z0-9.-]{4,10}\\.[a-z]{2,6}$" class="form-control" name="pEmail" [(ngModel)]="passengerEmail" required placeholder="Ex: username@xyz.com">
+            <div *ngIf="Email.errors && (Email.invalid || Email.touched)">
+                <small class="text-danger" *ngIf="Email.errors.required && Email.touched">Email is required</small>
+                <small class="text-danger" *ngIf="Email.errors.pattern">Email must be in given format</small>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid">Submit</button>
+        <p></p>
+    </form>
+    
+    <button class="btn btn-primary" type="submit" (click)="bookTicket()">Book ticket</button>
+    <p></p>
+
+    <div class="container form-group" align="center" *ngIf="check3">
+        <div *ngFor="let ticket of tickets; index as i">
+            <label>Ticket id for passenger: {{ i }}</label>
+            <h2>{{ ticket }}</h2>
+        </div>
+    </div>
+</div>

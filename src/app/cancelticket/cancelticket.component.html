@@ -1,0 +1,15 @@
+<!-- <p>cancelticket works!</p> -->
+<div class="container form-group" align="center">
+    <form>
+    <label><strong>Enter Ticket Id: </strong></label>
+    <input type="number" class="form-control" name="tId" required [(ngModel)]="ticketId">
+    <p></p>
+    <button class="btn btn-primary" (click)="cancelTicket()">Submit</button>
+    </form>
+</div>
+
+<div *ngIf="check" align="center" class="container form-group">
+    <div *ngFor="let cancelMessage of cancelMessages">
+        <h2>{{ cancelMessage }}</h2>
+    </div>
+</div>
